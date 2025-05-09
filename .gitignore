@@ -1,0 +1,49 @@
+# Ignore binary dan executable
+bin/
+tmp/
+dist/
+*.exe
+*.out
+
+# Ignore folder dependency
+vendor/
+go/pkg/
+
+# Ignore file environment
+.env
+.env.local
+.env.*.local
+
+# Ignore file log
+*.log
+*.log.*
+
+# Ignore file IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore file build dan cache
+/build/
+/.cache/
+/.air*
+/.DS_Store
+
+# Ignore file testing
+/coverage.txt
+/profile.cov
+
+# Ignore file Go modules
+/go.sum
+/go.work
+/go.work.sum
+
+# Ignore file database (jika ada)
+*.db
+*.sqlite
+*.sqlite3
+
+# Ignore file OS
+Thumbs.db
+.DS_Store
