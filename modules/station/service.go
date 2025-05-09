@@ -36,10 +36,7 @@ func (s *service) GetAllStation() (response []StationResponse, err error) {
 	err = json.Unmarshal(byteResponse, &stations)
 
 	for _, item := range stations {
-		response = append(response, StationResponse{
-			Id:   item.Id,
-			Name: item.Name,
-		})
+		response = append(response, StationResponse(item))
 	}
 
 	return
