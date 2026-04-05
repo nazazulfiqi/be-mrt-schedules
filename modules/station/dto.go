@@ -8,6 +8,7 @@ type Station struct {
 type StationResponse struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
+	Slug string `json:"slug"`
 }
 
 type Schedule struct {
@@ -20,4 +21,11 @@ type Schedule struct {
 type ScheduleResponse struct {
 	StationName string `json:"station"`
 	Time        string `json:"time"`
+}
+
+type RouteRequest struct {
+	Type     string `json:"type"`
+	From     string `json:"from"`
+	To       string `json:"to"`
+	Datetime string `json:"datetime,omitempty"`
 }

@@ -14,7 +14,7 @@ func Initiate(router *gin.RouterGroup) {
 	station.GET("", func(c *gin.Context) {
 		GetAllStation(c, stationService)
 	})
-	station.GET("/:id", func(c *gin.Context) {
+	station.POST("/check", func(c *gin.Context) {
 		CheckSchedulesByStation(c, stationService)
 	})
 }
@@ -29,9 +29,13 @@ func GetAllStation(c *gin.Context, service Service) {
 }
 
 func CheckSchedulesByStation(c *gin.Context, service Service) {
-	id := c.Param("id")
+	var req RouteRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, response.APIResponse{Success: false, Message: err.Error(), Data: nil})
+		return
+	}
 
-	datas, err := service.CheckSchedulesByStation(id)
+	datas, err := service.CheckSchedulesByStation(req)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, response.APIResponse{Success: false, Message: err.Error(), Data: nil})
 		return
